@@ -1,0 +1,22 @@
+{
+  "shell": "src/view/kc-webcam.js",
+  "entrypoint": "index.html",
+  "fragments": ["src/view/lazy-element.js"],
+  "npm": true,
+  "moduleResolution": "node",
+  "sources": ["src/view/kc-webcam.js", "src/view/lazy-loader.js", "manifest/**", "manifest.json", "package.json"],
+  "extraDependencies": [
+    "robots.txt",
+    "node_modules/@webcomponents/webcomponentsjs/**"
+  ],
+  "builds": [{
+    "bundle": true,
+    "js": { 
+      "minify": true,
+      "compile": "es5",
+      "transformModulesToAmd": true
+    },
+    "addServiceWorker": true,
+    "addPushManifest": true
+  }]
+}
