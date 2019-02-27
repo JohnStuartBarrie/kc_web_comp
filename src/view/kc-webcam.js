@@ -1,58 +1,24 @@
+import { connect } from 'pwa-helpers'
 import { LitElement, html } from 'lit-element';
+import { store } from '../model/store.js'
 
-export class KCWebCam extends LitElement {
-  constructor () {
-    super()
-
-    this.webcamIndex = 0;
-    this.getCameras().then((videoDevices) => {
-      this.setUpCamera(videoDevices[this.webcamIndex])
-    })
-  }
-
+export class KCWebCam extends connect(store)(LitElement) {
   static get properties () {
     return {
       webcamIndex: { type: Number }
     }
   }
 
-  getCameras () {
-    return new Promise(resolve => {
-      const videoDevices = []
-      navigator.mediaDevices.enumerateDevices()
-        .then(devices => {
-          devices.forEach(function (device) {
-            if (device.kind === 'videoinput') {
-              videoDevices.push({
-                deviceId: device.deviceId,
-                label: device.label
-              })
-            }
-          })
-          resolve(videoDevices)
-        })
-    });
-  }
-
-  setUpCamera (videoDevice) {
-    var constraints = {
-      width: { min: 1280, ideal: 1280, max: 1920 },
-      height: { min: 720, ideal: 720, max: 1080 },
-      frameRate: 20,
-      deviceId: { exact: videoDevice.deviceId }
-    };
-
-    navigator.mediaDevices.getUserMedia({ video: constraints })
-      .then((stream) => {
-        // console.log(stream.getVideoTracks()[0].getCapabilities());
-        this.shadowRoot.getElementById('player').srcObject = stream;
-      });
+  stateChanged (state) {
+    const player = this.shadowRoot.getElementById('player');
+    if (player) {
+      player.srcObject = state.stream;
+    }
   }
 
   render () {
     return html`
-    <button id="capture">Capture</button>
-    <video id="player" width="1024" height="720" autoplay></video>
+      <video id="player" width="256" height="180" autoplay></video>
     `;
   }
 }

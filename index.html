@@ -10,6 +10,16 @@
     }
   </script>
   -->
+
+  <script>
+      // HACK(keanulee): The Redux package assumes `process` exists - mock it here before
+      // the module is loaded.
+      window.process = {
+        env: {
+          NODE_ENV: 'production'
+        }
+      };
+    </script>
   
   <!-- Load polyfills -->
   <script 
@@ -20,11 +30,22 @@
   <!-- Load components via WebComponents.waitFor -->
   <script type="module">
     window.WebComponents = window.WebComponents || { 
-      waitFor(cb){ addEventListener('WebComponentsReady', cb) }
+      waitFor(cb){
+        addEventListener('WebComponentsReady', cb)
+      }
     } 
     WebComponents.waitFor(async () => { 
-      import('./src/view/kc-webcam.js')
-      import('./src/view/lazy-loader.js');
+      import('./src/model/store.js');
+
+      import('./src/view/kc-webcam.js');
+      import('./src/view/kc-display.js');
+      import('./src/view/kc-webcam-selector.js');
+      import('./src/view/kc-display.js');
+      import('./src/view/kc-button.js');
+      
+      import('./src/action/setup').then((setUp) => {
+        setUp.default();
+      });
     });
   </script>
   
@@ -39,11 +60,10 @@
   <meta charset="UTF-8">
 </head>
 <body>
-
-  <kc-webcam webcamIndex=1>
+  <kc-display>
     <noscript>
       Could not render the custom element. Check that JavaScript is enabled.
     </noscript>
-  </kc-webcam>
+  </kc-display>
 
 </body>

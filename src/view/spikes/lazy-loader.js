@@ -2,7 +2,7 @@
 import { LitElement, html, css } from 'lit-element';
 
 export class LazyLoader extends LitElement {
-  static get styles() { 
+  static get styles () {
     return css`
       * {
       color: black;
@@ -21,25 +21,26 @@ export class LazyLoader extends LitElement {
         color: red;
       }
   
-    `};
+    `
+  };
   /**
-   * Define properties. Properties defined here will be automatically 
+   * Define properties. Properties defined here will be automatically
    * observed.
    */
-  static get properties() {
+  static get properties () {
     return {
       message: { type: String },
       pie: { type: Boolean }
     };
   }
 
-  constructor() {
+  constructor () {
     super();
     this.loadComplete = false;
-    this.load=false
+    this.load = false
   }
 
-  render() {
+  render () {
     return html`
       <h1>Kool Capture!</h1>
       <p class="main">${this.message}</p>
@@ -59,7 +60,7 @@ export class LazyLoader extends LitElement {
    * - Call a method to load the lazy element if necessary
    * - Focus the checkbox
    */
-  firstUpdated() {
+  firstUpdated () {
     const myInput = this.shadowRoot.getElementById('myinput');
     myInput.focus();
   }
@@ -69,16 +70,17 @@ export class LazyLoader extends LitElement {
    * - Toggle whether to display <lazy-element>
    * - Call a method to load the lazy element if necessary
    */
-  toggleLoad(e) {
+  toggleLoad (e) {
     this.Load = !this.load;
     this.loadLazy();
   }
 
   /**
-   * If we need the lazy element && it hasn't already been loaded, 
+   * If we need the lazy element && it hasn't already been loaded,
    * load it and remember that we loaded it.
    */
-  async loadLazy() {
+  async loadLazy () {
+    /**
     if(this.load && !this.loadComplete) {
       import('./lazy-element.js').then((LazyElement) => {
         this.loadComplete = true;
@@ -87,6 +89,7 @@ export class LazyLoader extends LitElement {
         console.log("LazyElement failed to load", reason);
       });
     }
+    */
   }
 }
 
