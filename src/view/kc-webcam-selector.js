@@ -6,12 +6,12 @@ import { changeWebcam } from '../action/change-webcam.js'
 export class WebCamSelector extends connect(store)(LitElement) {
   static get properties () {
     return {
-      webCameDevices: { type: Array }
+      webCamDevices: { type: Array }
     }
   }
 
   stateChanged (state) {
-    this.webCameDevices = state.webcamsDevices;
+    this.webCamDevices = state.webcamsDevices;
   }
 
   onChange (ev) {
@@ -25,7 +25,7 @@ export class WebCamSelector extends connect(store)(LitElement) {
         :host([hidden]) { display: none; }
       </style>
       <select id="demo" @change=${this.onChange}>
-        ${this.webCameDevices.map(item => html`<option value="${item.deviceId}" >${item.label}</option></li>`)}
+        ${this.webCamDevices.map(item => html`<option value="${item.deviceId}" >${item.label}</option></li>`)}
       </select>
     `
   }
