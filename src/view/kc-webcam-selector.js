@@ -11,7 +11,7 @@ export class WebCamSelector extends connect(store)(LitElement) {
   }
 
   stateChanged (state) {
-    this.webCamDevices = state.webcamsDevices;
+    this.webCamDevices = state.webcam.devices;
   }
 
   onChange (ev) {

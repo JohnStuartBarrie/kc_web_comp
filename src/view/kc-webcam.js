@@ -12,7 +12,7 @@ export class KCWebCam extends connect(store)(LitElement) {
   stateChanged (state) {
     const player = this.shadowRoot.getElementById('player');
     if (player) {
-      player.srcObject = state.stream;
+      player.srcObject = state.webcam.stream;
     }
   }
 

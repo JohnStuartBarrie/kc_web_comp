@@ -5,8 +5,8 @@ import { getCameras } from '../../get-cameras'
 
 export const setUpWebCamera = () => {
   getCameras().then((webcamDevices) => {
-    store.dispatch({ type: WebCamConstants.LIST_WEBCAM, webcamDevices });
-    const state = store.getState()
-    webcamStreamSetup(webcamDevices[state.wecamIndex]);
+    store.dispatch({ type: WebCamConstants.LIST_WEBCAMS, webcamDevices });
+    const state = store.getState();
+    webcamStreamSetup(webcamDevices[state.webcam.index]);
   });
 }
