@@ -1,4 +1,4 @@
-import { setUpWebCamera } from './webcam/setup-web-camera.js'
+import { setUpWebCamera } from './webcam/index.js'
 
 export default () => {
   setUpWebCamera();
