@@ -1,19 +1,34 @@
+import { connect } from 'pwa-helpers'
 import { LitElement, html } from 'lit-element'
+import { store } from '../model/store.js'
+import { changeWebcam } from '../action/change-webcam.js'
 
-export class LazyElement extends LitElement {
+export class WebCamSelector extends connect(store)(LitElement) {
+  static get properties () {
+    return {
+      webCamDevices: { type: Array }
+    }
+  }
+
+  stateChanged (state) {
+    this.webCamDevices = state.webcam.devices;
+  }
+
+  onChange (ev) {
+    changeWebcam(ev.currentTarget.value);
+  }
+
   render () {
     return html`
       <style>
         :host { display: block; }
         :host([hidden]) { display: none; }
       </style>
-      <select id="demo">
-        <option value="value 1">JavaScript</option>
-        <option value="value 2">CSS3</option>
-        <option value="value 3">HTML5</option>
+      <select id="demo" @change=${this.onChange}>
+        ${this.webCamDevices.map(item => html`<option value="${item.deviceId}" >${item.label}</option></li>`)}
       </select>
     `
   }
 }
-// Register the element with the browser
-customElements.define('lazy-element', LazyElement)
+
+customElements.define('kc-webcam-selector', WebCamSelector)

@@ -16,6 +16,7 @@
     "@webcomponents/webcomponentsjs": "latest",
     "lit-element": "latest",
     "nanoid": "^2.0.1",
+    "pwa-helpers": "^0.9.1",
     "redux": "^4.0.1"
   },
   "devDependencies": {
