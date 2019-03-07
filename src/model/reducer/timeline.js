@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
     case TimelineConstants.CAPTURING_FRAMES:
       return { ...state, capturing: true }
     case TimelineConstants.ADD_FRAME: {
-      const new_frames = [
+      const newFrames = [
         ...state.frames,
         {
           frameid: state.frames.length + 1,
@@ -22,11 +22,10 @@ export default (state = INITIAL_STATE, action) => {
         }
       ]
 
-      const new_state = {
+      return {
         ...state,
-        frames: new_frames
+        frames: newFrames
       }
-      return new_state
     }
     case TimelineConstants.GOTO_NEXT_FRAME:
       return { ...state, currentIndex: state.currentIndex++ }
