@@ -34,10 +34,11 @@
         addEventListener('WebComponentsReady', cb)
       }
     } 
-    WebComponents.waitFor(async () => { 
+    WebComponents.waitFor(async () => {
       import('./src/model/store.js');
 
       import('./src/view/kc-webcam.js');
+      import('./src/view/kc-timeline.js');
       import('./src/view/kc-display.js');
       import('./src/view/kc-transport.js');
       

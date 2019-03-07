@@ -7,6 +7,7 @@ class KCDisplay extends LitElement {
       <kc-webcam-selector></kc-webcam-selector>
       <kc-webcam></kc-webcam>
       <kc-transport></kc-transport>
+      <kc-timeline></kc-timeline>
     </div>
     `
   }
