@@ -1,9 +1,9 @@
 import { connect } from 'pwa-helpers'
 import { LitElement, html } from 'lit-element'
 import { store } from '../model/store.js'
-import { changeWebcam } from '../action/change-webcam.js'
+import { changeWebcam } from '../action/webcam/change-webcam.js'
 
-export class WebCamSelector extends connect(store)(LitElement) {
+class WebCamSelector extends connect(store)(LitElement) {
   static get properties () {
     return {
       webCamDevices: { type: Array }
@@ -20,10 +20,6 @@ export class WebCamSelector extends connect(store)(LitElement) {
 
   render () {
     return html`
-      <style>
-        :host { display: block; }
-        :host([hidden]) { display: none; }
-      </style>
       <select id="demo" @change=${this.onChange}>
         ${this.webCamDevices.map(item => html`<option value="${item.deviceId}" >${item.label}</option></li>`)}
       </select>
@@ -32,3 +28,5 @@ export class WebCamSelector extends connect(store)(LitElement) {
 }
 
 customElements.define('kc-webcam-selector', WebCamSelector)
+
+export default WebCamSelector;

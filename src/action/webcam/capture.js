@@ -1,5 +1,5 @@
-import { store } from '../model/store';
-import { TimelineConstants } from '../model/constant'
+import { store } from '../../model/store';
+import { TimelineConstants } from '../../model/constant'
 
 export const capture = () => {
   store.dispatch({ type: TimelineConstants.CAPTURING_FRAMES });

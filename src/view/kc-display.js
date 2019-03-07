@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit-element'
 
-export class KCDisplay extends LitElement {
+class KCDisplay extends LitElement {
   render () {
     return html`
     <div>
@@ -13,3 +13,5 @@ export class KCDisplay extends LitElement {
 }
 
 customElements.define('kc-display', KCDisplay)
+
+export default KCDisplay;

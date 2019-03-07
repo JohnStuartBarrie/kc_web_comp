@@ -1,9 +1,9 @@
 import { connect } from 'pwa-helpers'
 import { LitElement, html } from 'lit-element'
 import { store } from '../model/store.js'
-import { capture } from '../action/capture.js'
+import { capture } from '../action/webcam/capture.js'
 
-export class Transport extends connect(store)(LitElement) {
+class Transport extends connect(store)(LitElement) {
   static get properties () {
     return {
       capturing: { type: Boolean },
@@ -37,3 +37,5 @@ export class Transport extends connect(store)(LitElement) {
 }
 
 customElements.define('kc-transport', Transport)
+
+export default Transport
