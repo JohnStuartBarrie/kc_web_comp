@@ -2,16 +2,10 @@ import { connect } from 'pwa-helpers'
 import { LitElement, html } from 'lit-element';
 import { store } from '../model/store.js'
 
-export class KCWebCam extends connect(store)(LitElement) {
-  static get properties () {
-    return {
-      webcamIndex: { type: Number }
-    }
-  }
-
+class KCWebCam extends connect(store)(LitElement) {
   stateChanged (state) {
     const player = this.shadowRoot.getElementById('player');
-    if (player) {
+    if (player && player.srcObject !== state.webcam.stream) {
       player.srcObject = state.webcam.stream;
     }
   }
@@ -24,3 +18,5 @@ export class KCWebCam extends connect(store)(LitElement) {
 }
 
 customElements.define('kc-webcam', KCWebCam);
+
+export default KCWebCam

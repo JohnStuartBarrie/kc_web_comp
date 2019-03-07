@@ -1,6 +1,7 @@
-import { store } from '../model/store';
-import { WebCamConstants } from '../model/constant'
-export const webcamStreamSetup = (videoDevice) => {
+import { store } from '../../model/store';
+import { WebCamConstants } from '../../model/constant'
+
+export const setWebcamStream = (videoDevice) => {
   const constraints = {
     width: { min: 1024, ideal: 1280, max: 1920 },
     height: { min: 720, ideal: 720, max: 1080 },

@@ -1,7 +1,7 @@
 
 import { LitElement, html, css } from 'lit-element';
 
-export class LazyLoader extends LitElement {
+class LazyLoader extends LitElement {
   static get styles () {
     return css`
       * {
@@ -20,7 +20,6 @@ export class LazyLoader extends LitElement {
       .important {
         color: red;
       }
-  
     `
   };
   /**
@@ -95,3 +94,5 @@ export class LazyLoader extends LitElement {
 
 // Register the element with the browser
 customElements.define('lazy-loader', LazyLoader);
+
+export default LazyLoader;

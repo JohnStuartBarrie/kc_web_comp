@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit-element'
 
-export class KCButton extends LitElement {
+class KCButton extends LitElement {
   constructor () {
     super()
     this.text = 'Button';
@@ -20,3 +20,5 @@ export class KCButton extends LitElement {
 }
 
 customElements.define('kc-button', KCButton)
+
+export default KCButton;
