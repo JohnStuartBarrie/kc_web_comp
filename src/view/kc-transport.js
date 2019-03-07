@@ -23,10 +23,6 @@ export class Transport extends connect(store)(LitElement) {
 
   render () {
     return html`
-      <style>
-        :host { display: block; }
-        :host([hidden]) { display: none; }
-      </style>
       <kc-button text='capture' @click=${this.onClick}></kc-button>
       <div>:${this.capturing ? 'capturing' : null}</div>
       <div>
