@@ -4,18 +4,29 @@ const INITIAL_STATE = {
   currentIndex: 0,
   frames: [],
   stream: null,
-  capturing: false,
-  capturedImage: null
+  capturing: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TimelineConstants.CAPTURE_FRAMES_SUCCESS:
-      return { ...state, capturing: false, capturedImage: action.image }
+      return { ...state, capturing: false }
     case TimelineConstants.CAPTURING_FRAMES:
       return { ...state, capturing: true }
-    case TimelineConstants.ADD_FRAME:
-      return { ...state, frames: state.frames.push[{ frameid: state.frames.length }] }
+    case TimelineConstants.ADD_FRAME: {
+      const newFrames = [
+        ...state.frames,
+        {
+          frameid: state.frames.length + 1,
+          image: action.image
+        }
+      ]
+
+      return {
+        ...state,
+        frames: newFrames
+      }
+    }
     case TimelineConstants.GOTO_NEXT_FRAME:
       return { ...state, currentIndex: state.currentIndex++ }
     default:

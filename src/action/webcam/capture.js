@@ -23,5 +23,6 @@ export const capture = () => {
     c.drawImage(video, 0, 0, canvas.width, canvas.height);
     const image = canvas.toDataURL('image/jpeg', 1.0);
     store.dispatch({ type: TimelineConstants.CAPTURE_FRAMES_SUCCESS, image });
+    store.dispatch({ type: TimelineConstants.ADD_FRAME, image });
   }, 100);
 };
