@@ -20,38 +20,40 @@
         }
       };
     </script>
-  
+
   <!-- Load polyfills -->
-  <script 
+  <script
     src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
     defer>
-  </script> 
+  </script>
 
   <!-- Load components via WebComponents.waitFor -->
   <script type="module">
-    window.WebComponents = window.WebComponents || { 
+    window.WebComponents = window.WebComponents || {
       waitFor(cb){
         addEventListener('WebComponentsReady', cb)
       }
-    } 
+    }
     WebComponents.waitFor(async () => {
       import('./src/model/store.js');
 
       import('./src/view/kc-webcam.js');
       import('./src/view/kc-timeline.js');
+      import('./src/view/kc-playback-controls.js');
+      import('./src/view/kc-change-frame.js');
       import('./src/view/kc-display.js');
       import('./src/view/kc-transport.js');
-      
+
       import('./src/view/kc-webcam-selector.js');
       import('./src/view/kc-display.js');
       import('./src/view/kc-button.js');
-      
+
       import('./src/action/setup').then((setUp) => {
         setUp.default();
       });
     });
   </script>
-  
+
   <!-- Change stuff here for your app -->
   <meta name="description" content="start-lit-element">
   <meta name="theme-color" content="#ffffff">
@@ -68,5 +70,6 @@
       Could not render the custom element. Check that JavaScript is enabled.
     </noscript>
   </kc-display>
+  <kc-playback-controls></kc-playback-controls>
   <kc-timeline></kc-timeline>
 </body>

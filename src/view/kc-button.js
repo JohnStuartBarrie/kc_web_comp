@@ -8,13 +8,14 @@ class KCButton extends LitElement {
 
   static get properties () {
     return {
-      text: { type: String }
+      text: { type: String },
+      title: { type: String }
     }
   }
 
   render () {
     return html`
-    <button id="capture">${this.text}</button>
+      <button title="${this.title || ''}">${this.text}</button>
     `
   }
 }
