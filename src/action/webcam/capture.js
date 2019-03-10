@@ -1,5 +1,5 @@
 import { store } from '../../model/store';
-import { TimelineConstants } from '../../model/constant'
+import { TimelineConstants } from '../../model/constant';
 
 export const capture = () => {
   store.dispatch({ type: TimelineConstants.CAPTURING_FRAMES });
@@ -19,7 +19,6 @@ export const capture = () => {
 
   setTimeout(() => {
     const c = canvas.getContext('2d');
-
     c.drawImage(video, 0, 0, canvas.width, canvas.height);
     const image = canvas.toDataURL('image/jpeg', 1.0);
     store.dispatch({ type: TimelineConstants.CAPTURE_FRAMES_SUCCESS, image });
