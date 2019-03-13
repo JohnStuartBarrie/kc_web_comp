@@ -3,50 +3,45 @@ import { TimelineConstants } from '../model/constant';
 
 class Timeline {
   constructor () {
-    this.index = 0;
     this.clearInterval = null;
-    this.frames = 0;
-    store.subscribe(() => {
-      this.storeChange()
-    })
-  }
-
-  storeChange () {
-    const state = store.getState();
-    this.frames = state.timeline.frames.length;
-    if (this.index !== state.timeline.currentIndex) {
-      this.index = state.timeline.currentIndex;
-      console.log('currentIndex changed ', state.timeline.currentIndex);
-    }
   }
 
   start () {
-    this.index = 0;
     if (this.clearInterval) {
       clearInterval(this.clearInterval)
       this.clearInterval = null;
     }
-    this.clearInterval = setInterval(() => { this.increment(); }, 1);
+    this.clearInterval = setInterval(() => { this.increment(); }, 100);
   }
 
   stop () {
-    clearInterval(this.clearInterval)
+    clearInterval(this.clearInterval);
     this.clearInterval = null;
     store.dispatch({ type: TimelineConstants.SHOW_LIVE, showLiveView: true });
   }
 
   increment () {
-    if (this.index >= this.frames) {
+    if (this.currentIndex >= this.frameLength) {
       store.dispatch({ type: TimelineConstants.CURRENT_INDEX, index: 0 });
       store.dispatch({ type: TimelineConstants.SHOW_LIVE, showLiveView: true });
       return
     }
-    store.dispatch({ type: TimelineConstants.SHOW_LIVE, showLiveView: false });
-    store.dispatch({ type: TimelineConstants.CURRENT_INDEX, index: this.index + 1 });
+    if (this.state.timeline.showLiveView) {
+      store.dispatch({ type: TimelineConstants.SHOW_LIVE, showLiveView: false });
+    }
+    store.dispatch({ type: TimelineConstants.CURRENT_INDEX, index: this.currentIndex + 1 });
+  }
+
+  get frameLength () {
+    return this.state.timeline.frames.length;
   }
 
   get currentIndex () {
-    return this.index;
+    return this.state.timeline.currentIndex;
+  }
+
+  get state () {
+    return store.getState();
   }
 }
 

@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   currentIndex: 0,
   frames: [],
   stream: null,
-  capturing: false
+  capturing: false,
+  showLiveView: true
 };
 
 export default (state = INITIAL_STATE, action) => {

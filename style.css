@@ -1,0 +1,7 @@
+.hideLiveView {
+  visibility: hidden;
+}
+
+body {
+  background-color: gray
+}
