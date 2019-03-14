@@ -5,6 +5,10 @@ export const WebCamConstants = {
 };
 
 export const TimelineConstants = {
+  SHOW_LIVE: 'TimelineConstants.SHOW_LIVE',
+  PLAYING: 'TimelineConstants.PLAYING',
+  STOPPED: 'TimelineConstants.STOPPED',
+  CURRENT_INDEX: 'TimelineConstants.CURRENT_INDEX',
   ADD_FRAME: 'TimelineConstants.ADD_FRAME',
   GOTO_NEXT_FRAME: 'TimelineConstants.GOTO_NEXT_FRAME',
   CAPTURING_FRAMES: 'TimelineConstants.CAPTURING_FRAMES',

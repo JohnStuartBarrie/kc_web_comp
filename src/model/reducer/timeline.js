@@ -4,11 +4,18 @@ const INITIAL_STATE = {
   currentIndex: 0,
   frames: [],
   stream: null,
-  capturing: false
+  capturing: false,
+  showLiveView: true
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case TimelineConstants.CURRENT_INDEX:
+      return { ...state, currentIndex: action.index }
+    case TimelineConstants.SHOW_LIVE:
+      return { ...state, showLiveView: action.showLiveView }
+    case TimelineConstants.PLAY:
+      return state;
     case TimelineConstants.CAPTURE_FRAMES_SUCCESS:
       return { ...state, capturing: false }
     case TimelineConstants.CAPTURING_FRAMES:

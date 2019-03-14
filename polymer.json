@@ -1,10 +1,9 @@
 {
   "shell": "src/view/kc-webcam.js",
   "entrypoint": "index.html",
-  "fragments": ["src/view/spikes/lazy-element.js"],
   "npm": true,
   "moduleResolution": "node",
-  "sources": ["src/view/kc-display.js", "src/view/spikes/lazy-loader.js", "manifest/**", "manifest.json", "package.json"],
+  "sources": ["src/view/spikes/lazy-loader.js", "manifest/**", "manifest.json", "package.json"],
   "extraDependencies": [
     "robots.txt",
     "node_modules/@webcomponents/webcomponentsjs/**"

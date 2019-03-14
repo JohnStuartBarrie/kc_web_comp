@@ -10,7 +10,7 @@
     }
   </script>
   -->
-
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script>
       // HACK(keanulee): The Redux package assumes `process` exists - mock it here before
       // the module is loaded.
@@ -39,11 +39,9 @@
 
       import('./src/view/kc-webcam.js');
       import('./src/view/kc-timeline.js');
-      import('./src/view/kc-display.js');
       import('./src/view/kc-transport.js');
       
       import('./src/view/kc-webcam-selector.js');
-      import('./src/view/kc-display.js');
       import('./src/view/kc-button.js');
       
       import('./src/action/setup').then((setUp) => {
@@ -63,10 +61,10 @@
   <meta charset="UTF-8">
 </head>
 <body>
-  <kc-display>
-    <noscript>
-      Could not render the custom element. Check that JavaScript is enabled.
-    </noscript>
-  </kc-display>
+  <kc-webcam-selector></kc-webcam-selector>
+  <div>
+    <kc-webcam></kc-webcam>
+  </div>
+  <kc-transport></kc-transport>
   <kc-timeline></kc-timeline>
 </body>
